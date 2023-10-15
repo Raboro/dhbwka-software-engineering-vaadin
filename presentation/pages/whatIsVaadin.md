@@ -11,7 +11,7 @@
 
 ---
 
-# Preisüberblick
+# Was ist Vaadin - Preisüberblick
 
 <table>
     <tr v-click>
@@ -43,7 +43,7 @@
 
 ---
 
-# Aufbau
+# Was ist Vaadin - Aufbau
 
 <style>
 .vaadinContainer {
