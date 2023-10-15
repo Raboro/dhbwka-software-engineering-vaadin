@@ -60,5 +60,30 @@ src: pages/whatIsVaadin.md
 ---
 
 ---
+src: pages/flowFramework.md
+---
+
+---
+src: pages/uiComponents.md
+---
+
+---
+src: pages/kits.md
+---
+
+---
+src: pages/designSystemPublisher.md
+---
+
+---
+src: pages/designer.md
+---
+
+---
+src: pages/testBench.md
+---
+
+
+---
 src: pages/src.md
 ---
