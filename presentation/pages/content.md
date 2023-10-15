@@ -1,9 +1,12 @@
 # Inhalt
-- Was ist Vaadin 
-- Funktionen
-- Vor- und Nachteile
-- Projektaufbau
-- Code Beispiele 
+
+<ul>
+  <li v-click>Was ist Vaadin</li>
+  <li v-click>Funktionen</li>
+  <li v-click>Vor- und Nachteile</li>
+  <li v-click>Projektaufbau</li>
+  <li v-click>Code Beispiele</li>
+</ul>
 
 <div class="w-60 relative mt-4">
   <div class="relative w-80 h-40">
