@@ -56,5 +56,9 @@ src: pages/content.md
 ---
 
 ---
+src: pages/whatIsVaadin.md
+---
+
+---
 src: pages/src.md
 ---
