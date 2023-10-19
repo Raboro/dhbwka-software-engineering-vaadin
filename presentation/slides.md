@@ -60,10 +60,6 @@ src: pages/whatIsVaadin.md
 ---
 
 ---
-src: pages/flowFramework.md
----
-
----
 src: pages/uiComponents.md
 ---
 
