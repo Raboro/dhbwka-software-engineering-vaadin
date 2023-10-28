@@ -33,7 +33,9 @@ public class MainView extends AppLayout {
         Grid<Person> grid = new Grid<>(Person.class, false);
         grid.addColumn(Person::getId).setHeader("Id");
         grid.addColumn(Person::getName).setHeader("Name");
-        grid.addColumn(Person::getAge).setHeader("Age");
+        grid.addColumn(Person::getAge)
+                .setHeader("Age")
+                .setFooter("Average Age: " + controller.averageAgeOfAllPersons());
         grid.addColumn(Person::getHolidayDays)
                 .setHeader("HolidayDays")
                 .setFooter("Total Holiday Days: " + controller.countHolidayDaysOfAllPersons());

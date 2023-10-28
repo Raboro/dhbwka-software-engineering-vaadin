@@ -37,4 +37,15 @@ public class PersonController {
                 .mapToInt(Person::getHolidayDays)
                 .sum();
     }
+
+    public int averageAgeOfAllPersons() {
+        final List<Person> persons = getAllPersons();
+        return sumOfAges(persons) / persons.size();
+    }
+
+    private int sumOfAges(List<Person> persons) {
+        return persons.stream()
+                .mapToInt(Person::getAge)
+                .sum();
+    }
 }
