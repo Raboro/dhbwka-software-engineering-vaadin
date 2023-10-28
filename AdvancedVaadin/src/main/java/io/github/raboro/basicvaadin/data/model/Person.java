@@ -18,10 +18,10 @@ public class Person {
     private long id;
     private String name;
     private String email;
-    private String age;
+    private int age;
     private int holidayDays;
 
-    public Person(String name, String email, String age, int holidayDays) {
+    public Person(String name, String email, int age, int holidayDays) {
         this.name = name;
         this.email = email;
         this.age = age;
