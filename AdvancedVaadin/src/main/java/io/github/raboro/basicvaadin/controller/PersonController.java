@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @author MariusWoerfel
@@ -47,5 +48,23 @@ public class PersonController {
         return persons.stream()
                 .mapToInt(Person::getAge)
                 .sum();
+    }
+
+    public Optional<String> validatePerson(String ageField, String holidayDaysField) {
+        final Optional<String> ageCheck = isInvalid(ageField, "Age is not a number");
+        return ageCheck.isPresent() ? ageCheck : isInvalid(holidayDaysField, "HolidayDays is not a number");
+    }
+
+    private Optional<String> isInvalid(String value, String errorMessage) {
+        try {
+            Integer.parseInt(value);
+            return Optional.empty();
+        } catch (NumberFormatException e) {
+            return Optional.of(errorMessage);
+        }
+    }
+
+    public void savePerson(String name, String email, String age, String holidayDays) {
+        repository.save(new Person(name, email, Integer.parseInt(age), Integer.parseInt(holidayDays)));
     }
 }
