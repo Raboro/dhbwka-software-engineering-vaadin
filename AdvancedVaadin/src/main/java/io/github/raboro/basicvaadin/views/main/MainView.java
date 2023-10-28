@@ -29,9 +29,9 @@ public class MainView extends AppLayout {
 
         Div content = new Div();
         content.getStyle().setPadding("10%");
-        content.add(new PersonGrid(controller));
-
-        Button addButton = new Button("Add", e -> Notification.show("Add"));
+        PersonGrid personGrid = new PersonGrid(controller);
+        content.add(personGrid);
+        Button addButton = new Button("Add", e -> new PersonAddDialog(controller, personGrid::update).open());
         addButton.getStyle().set("margin-left", "46%");
         addButton.getStyle().set("margin-top", "10%");
         addButton.getStyle().setWidth("10%");
