@@ -29,4 +29,10 @@ public class PersonGrid extends Grid<Person> {
                 .setHeader("HolidayDays")
                 .setFooter("Total Holiday Days: " + controller.countHolidayDaysOfAllPersons());
     }
+
+    public void update() {
+        setItems(this.controller.getAllPersons());
+        removeAllColumns();
+        constructColumns();
+    }
 }
