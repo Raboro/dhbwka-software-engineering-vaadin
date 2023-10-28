@@ -26,7 +26,7 @@ public class HeaderView extends HorizontalLayout {
 
     private void addData(SecurityService securityService) {
         H1 title = new H1("Overview");
-        title.getStyle().set("margin-left", "43%");
+        title.getStyle().set("margin-left", "42%");
         Button logoutButton = new Button("Logout", e -> securityService.logout());
         logoutButton.getStyle().set("margin-left", "auto");
         logoutButton.getStyle().set("margin-right", "3%");
