@@ -26,8 +26,6 @@ public class MainView extends AppLayout {
         addToNavbar(true, new HeaderView(securityService));
 
         Div content = new Div();
-        content.addClassName("content-wrraper");
-        content.getStyle().set("justify-content", "center");
         content.getStyle().set("padding", "10%");
 
         Grid<Person> grid = new Grid<>(Person.class, false);
