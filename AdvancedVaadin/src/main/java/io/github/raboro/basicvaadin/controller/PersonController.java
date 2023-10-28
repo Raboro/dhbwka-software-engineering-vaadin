@@ -31,4 +31,10 @@ public class PersonController {
     public List<Person> getAllPersons() {
         return repository.findAll();
     }
+
+    public int countHolidayDaysOfAllPersons() {
+        return getAllPersons().stream()
+                .mapToInt(Person::getHolidayDays)
+                .sum();
+    }
 }
