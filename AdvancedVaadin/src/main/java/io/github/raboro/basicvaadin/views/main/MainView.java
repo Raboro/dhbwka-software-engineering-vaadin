@@ -27,19 +27,7 @@ public class MainView extends AppLayout {
 
         Div content = new Div();
         content.getStyle().set("padding", "10%");
-
-        Grid<Person> grid = new Grid<>(Person.class, false);
-        grid.addColumn(Person::getName)
-                .setHeader("Name")
-                .setFooter("Total Persons: " + controller.getAllPersons().size());
-        grid.addColumn(Person::getAge)
-                .setHeader("Age")
-                .setFooter("Average Age: " + controller.averageAgeOfAllPersons());
-        grid.addColumn(Person::getHolidayDays)
-                .setHeader("HolidayDays")
-                .setFooter("Total Holiday Days: " + controller.countHolidayDaysOfAllPersons());
-        grid.setItems(controller.getAllPersons());
-        content.add(grid);
+        content.add(new PersonGrid(controller));
         setContent(content);
     }
 
