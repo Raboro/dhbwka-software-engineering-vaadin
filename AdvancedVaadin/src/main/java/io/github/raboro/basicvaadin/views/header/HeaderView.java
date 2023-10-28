@@ -32,6 +32,7 @@ public class HeaderView extends HorizontalLayout {
         logoutButton.getStyle().set("margin-right", "3%");
         Avatar avatar = new Avatar(securityService.getAuthenticatedUser().getUsername());
         avatar.getStyle().set("margin-right", "2%");
+        avatar.setTooltipEnabled(true);
         add(new DrawerToggle(), title, logoutButton, avatar);
     }
 }
