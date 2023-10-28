@@ -28,7 +28,7 @@ public class MainView extends AppLayout {
         addToNavbar(true, new HeaderView(securityService));
 
         Div content = new Div();
-        content.getStyle().set("padding", "10%");
+        content.getStyle().setPadding("10%");
         content.add(new PersonGrid(controller));
 
         Button addButton = new Button("Add", e -> Notification.show("Add"));
