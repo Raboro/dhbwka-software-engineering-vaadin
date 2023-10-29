@@ -57,8 +57,7 @@ public class PersonController {
 
     private Optional<String> isInvalid(String value, String errorMessage) {
         try {
-            Integer.parseInt(value);
-            return Optional.empty();
+            return Integer.parseInt(value) < 0 ? Optional.of("Value too low") : Optional.empty();
         } catch (NumberFormatException e) {
             return Optional.of(errorMessage);
         }
