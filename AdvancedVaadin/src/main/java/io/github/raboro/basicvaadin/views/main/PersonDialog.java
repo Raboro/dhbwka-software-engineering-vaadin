@@ -61,5 +61,5 @@ public abstract class PersonDialog extends Dialog {
         saveNonEmptyPerson();
     }
 
-    abstract protected void saveNonEmptyPerson();
+    protected abstract void saveNonEmptyPerson();
 }
