@@ -30,12 +30,7 @@ public class PersonGrid extends Grid<Person> {
         addBasicColumns();
         addBadgeColumn();
         addDeleteColumn();
-        addColumn(new ComponentRenderer<>(Button::new, (button, person) -> {
-            button.addThemeVariants(LUMO_ICON,
-                    LUMO_TERTIARY);
-            button.addClickListener(e -> Notification.show("Edit"));
-            button.setIcon(new Icon(VaadinIcon.EDIT));
-        })).setHeader("Edit").setWidth("0.5%");
+        addEditColumn();
     }
 
     private void addBasicColumns() {
@@ -69,6 +64,14 @@ public class PersonGrid extends Grid<Person> {
                     button.setIcon(new Icon(VaadinIcon.TRASH));
                 })
         ).setHeader("Delete").setWidth("0.5%");
+    }
+
+    private void addEditColumn() {
+        addColumn(new ComponentRenderer<>(Button::new, (button, person) -> {
+            button.addThemeVariants(LUMO_ICON, LUMO_TERTIARY);
+            button.addClickListener(e -> Notification.show("Edit"));
+            button.setIcon(new Icon(VaadinIcon.EDIT));
+        })).setHeader("Edit").setWidth("0.5%");
     }
 
     public void update() {
