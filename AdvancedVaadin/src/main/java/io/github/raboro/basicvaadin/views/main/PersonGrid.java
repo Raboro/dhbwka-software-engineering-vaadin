@@ -41,15 +41,18 @@ public class PersonGrid extends Grid<Person> {
         addColumn(Person::getName)
                 .setHeader("Name")
                 .setFooter("Total Persons: " + controller.getAllPersons().size())
-                .setTextAlign(ColumnTextAlign.CENTER);
+                .setTextAlign(ColumnTextAlign.CENTER)
+                .setSortable(true);
         addColumn(Person::getAge)
                 .setHeader("Age")
                 .setFooter("Average Age: " + controller.averageAgeOfAllPersons())
-                .setTextAlign(ColumnTextAlign.CENTER);
+                .setTextAlign(ColumnTextAlign.CENTER)
+                .setSortable(true);
         addColumn(Person::getHolidayDays)
                 .setHeader("HolidayDays")
                 .setFooter("Total Holiday Days: " + controller.countHolidayDaysOfAllPersons())
-                .setTextAlign(ColumnTextAlign.CENTER);
+                .setTextAlign(ColumnTextAlign.CENTER)
+                .setSortable(true);
     }
 
     private void addBadgeColumn() {
@@ -58,7 +61,7 @@ public class PersonGrid extends Grid<Person> {
                     span.getElement().getThemeList().add("badge " + (moreThenOneHolidayDay ? "success" : "error"));
                     span.getElement().setText(moreThenOneHolidayDay ? "Remaining" : "Done");
                 })
-        ).setHeader("Holiday Status").setWidth("0.5%").setTextAlign(ColumnTextAlign.CENTER);
+        ).setHeader("Holiday Status").setWidth("0.5%").setTextAlign(ColumnTextAlign.CENTER).setSortable(true);
     }
 
     private void addDeleteColumn() {
