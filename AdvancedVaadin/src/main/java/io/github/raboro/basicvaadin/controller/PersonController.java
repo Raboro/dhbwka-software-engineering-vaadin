@@ -71,4 +71,15 @@ public class PersonController {
     public void deletePerson(Person person) {
         repository.delete(person);
     }
+
+    public void updatePerson(Person person, String name, String email, String age, String holidayDays) {
+        Optional<Person> byId = repository.findById(person.getId());
+        byId.ifPresentOrElse(updatedPerson -> {
+            updatedPerson.setName(name);
+            updatedPerson.setEmail(email);
+            updatedPerson.setAge(Integer.parseInt(age));
+            updatedPerson.setHolidayDays(Integer.parseInt(holidayDays));
+            repository.save(updatedPerson);
+        }, () -> repository.save(new Person(name, email, Integer.parseInt(age), Integer.parseInt(holidayDays))));
+    }
 }
