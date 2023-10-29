@@ -67,4 +67,8 @@ public class PersonController {
     public void savePerson(String name, String email, String age, String holidayDays) {
         repository.save(new Person(name, email, Integer.parseInt(age), Integer.parseInt(holidayDays)));
     }
+
+    public void deletePerson(Person person) {
+        repository.delete(person);
+    }
 }

@@ -48,7 +48,10 @@ public class PersonGrid extends Grid<Person> {
             button.addThemeVariants(ButtonVariant.LUMO_ICON,
                     ButtonVariant.LUMO_ERROR,
                     ButtonVariant.LUMO_TERTIARY);
-            button.addClickListener(e -> Notification.show("Delete"));
+            button.addClickListener(e -> new DeletePersonDialog(person.getName(), () -> {
+                controller.deletePerson(person);
+                update();
+            }).open());
             button.setIcon(new Icon(VaadinIcon.TRASH));
         })).setHeader("Delete").setWidth("0.5%");
         addColumn(new ComponentRenderer<>(Button::new, (button, person) -> {
