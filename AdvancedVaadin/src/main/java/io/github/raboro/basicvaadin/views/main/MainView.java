@@ -2,13 +2,10 @@ package io.github.raboro.basicvaadin.views.main;
 
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.button.Button;
-import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.html.Div;
-import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import io.github.raboro.basicvaadin.controller.PersonController;
-import io.github.raboro.basicvaadin.data.model.Person;
 import io.github.raboro.basicvaadin.security.SecurityService;
 import io.github.raboro.basicvaadin.views.header.HeaderView;
 import jakarta.annotation.security.PermitAll;
