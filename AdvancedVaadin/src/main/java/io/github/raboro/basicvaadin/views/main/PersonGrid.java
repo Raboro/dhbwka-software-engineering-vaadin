@@ -26,15 +26,7 @@ public class PersonGrid extends Grid<Person> {
     }
 
     private void constructColumns() {
-        addColumn(Person::getName)
-                .setHeader("Name")
-                .setFooter("Total Persons: " + controller.getAllPersons().size());
-        addColumn(Person::getAge)
-                .setHeader("Age")
-                .setFooter("Average Age: " + controller.averageAgeOfAllPersons());
-        addColumn(Person::getHolidayDays)
-                .setHeader("HolidayDays")
-                .setFooter("Total Holiday Days: " + controller.countHolidayDaysOfAllPersons());
+        addBasicColumns();
         addColumn(new ComponentRenderer<>(Span::new, (span, person) -> {
             if (person.getHolidayDays() > 0) {
                 span.getElement().getThemeList().add("badge success");
@@ -60,6 +52,18 @@ public class PersonGrid extends Grid<Person> {
             button.addClickListener(e -> Notification.show("Edit"));
             button.setIcon(new Icon(VaadinIcon.EDIT));
         })).setHeader("Edit").setWidth("0.5%");
+    }
+
+    private void addBasicColumns() {
+        addColumn(Person::getName)
+                .setHeader("Name")
+                .setFooter("Total Persons: " + controller.getAllPersons().size());
+        addColumn(Person::getAge)
+                .setHeader("Age")
+                .setFooter("Average Age: " + controller.averageAgeOfAllPersons());
+        addColumn(Person::getHolidayDays)
+                .setHeader("HolidayDays")
+                .setFooter("Total Holiday Days: " + controller.countHolidayDaysOfAllPersons());
     }
 
     public void update() {
