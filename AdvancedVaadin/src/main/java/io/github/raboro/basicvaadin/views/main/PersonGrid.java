@@ -60,13 +60,9 @@ public class PersonGrid extends Grid<Person> {
 
     private void addBadgeColumn() {
         addColumn(new ComponentRenderer<>(Span::new, (span, person) -> {
-                    if (person.getHolidayDays() > 0) {
-                        span.getElement().getThemeList().add("badge success");
-                        span.getElement().setText("Remaining");
-                    } else {
-                        span.getElement().getThemeList().add("badge error");
-                        span.getElement().setText("Done");
-                    }
+                    final boolean moreThenOneHolidayDay = person.getHolidayDays() > 0;
+                    span.getElement().getThemeList().add("badge " + (moreThenOneHolidayDay ? "success" : "error"));
+                    span.getElement().setText(moreThenOneHolidayDay ? "Remaining" : "Done");
                 })
         ).setHeader("Holiday Status").setWidth("0.5%");
     }
