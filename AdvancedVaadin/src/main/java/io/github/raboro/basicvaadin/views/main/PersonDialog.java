@@ -1,7 +1,6 @@
 package io.github.raboro.basicvaadin.views.main;
 
 import com.vaadin.flow.component.ClickEvent;
-import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.dialog.Dialog;
@@ -53,7 +52,7 @@ public abstract class PersonDialog extends Dialog {
     }
 
     private void savePerson(ClickEvent<Button> buttonClickEvent) {
-        for (TextFieldBase field : fields) {
+        for (TextFieldBase<TextField, String> field : fields) {
             if (field.isEmpty()) {
                 Notification.show("Field: \"%s\" is empty".formatted(field.getLabel()));
                 return;
