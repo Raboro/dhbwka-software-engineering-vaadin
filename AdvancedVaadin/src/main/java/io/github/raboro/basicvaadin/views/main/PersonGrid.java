@@ -1,6 +1,7 @@
 package io.github.raboro.basicvaadin.views.main;
 
 import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.grid.ColumnTextAlign;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.icon.Icon;
@@ -38,13 +39,16 @@ public class PersonGrid extends Grid<Person> {
     private void addBasicColumns() {
         addColumn(Person::getName)
                 .setHeader("Name")
-                .setFooter("Total Persons: " + controller.getAllPersons().size());
+                .setFooter("Total Persons: " + controller.getAllPersons().size())
+                .setTextAlign(ColumnTextAlign.CENTER);
         addColumn(Person::getAge)
                 .setHeader("Age")
-                .setFooter("Average Age: " + controller.averageAgeOfAllPersons());
+                .setFooter("Average Age: " + controller.averageAgeOfAllPersons())
+                .setTextAlign(ColumnTextAlign.CENTER);
         addColumn(Person::getHolidayDays)
                 .setHeader("HolidayDays")
-                .setFooter("Total Holiday Days: " + controller.countHolidayDaysOfAllPersons());
+                .setFooter("Total Holiday Days: " + controller.countHolidayDaysOfAllPersons())
+                .setTextAlign(ColumnTextAlign.CENTER);
     }
 
     private void addBadgeColumn() {
@@ -53,7 +57,7 @@ public class PersonGrid extends Grid<Person> {
                     span.getElement().getThemeList().add("badge " + (moreThenOneHolidayDay ? "success" : "error"));
                     span.getElement().setText(moreThenOneHolidayDay ? "Remaining" : "Done");
                 })
-        ).setHeader("Holiday Status").setWidth("0.5%");
+        ).setHeader("Holiday Status").setWidth("0.5%").setTextAlign(ColumnTextAlign.CENTER);
     }
 
     private void addDeleteColumn() {
@@ -65,7 +69,7 @@ public class PersonGrid extends Grid<Person> {
                     }).open());
                     button.setIcon(new Icon(VaadinIcon.TRASH));
                 })
-        ).setHeader("Delete").setWidth("0.5%");
+        ).setHeader("Delete").setWidth("0.5%").setTextAlign(ColumnTextAlign.CENTER);
     }
 
     private void addEditColumn() {
@@ -73,7 +77,7 @@ public class PersonGrid extends Grid<Person> {
             button.addThemeVariants(LUMO_ICON, LUMO_TERTIARY);
             button.addClickListener(e -> new PersonEditDialog(controller, this::update, person).open());
             button.setIcon(new Icon(VaadinIcon.EDIT));
-        })).setHeader("Edit").setWidth("0.5%");
+        })).setHeader("Edit").setWidth("0.5%").setTextAlign(ColumnTextAlign.CENTER);
     }
 
     private void handleSelectionListener() {
