@@ -1,6 +1,7 @@
 package io.github.raboro.basicvaadin.views.main;
 
 import com.vaadin.flow.component.ClickEvent;
+import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.dialog.Dialog;
@@ -25,7 +26,7 @@ public abstract class PersonDialog extends Dialog {
     protected final EmailField emailField = new EmailField("Email");
     protected final TextField ageField = new TextField("Age");
     protected final TextField vacationDaysField = new TextField("Vacation Days");
-    protected final TextFieldBase[] fields = new TextFieldBase[]{ nameField, emailField, ageField, vacationDaysField };
+    protected final TextFieldBase<TextField, String>[] fields = new TextFieldBase[]{ nameField, emailField, ageField, vacationDaysField };
 
     PersonDialog(String title, PersonController controller, Runnable updateGrid) {
         this.updateGrid = updateGrid;
