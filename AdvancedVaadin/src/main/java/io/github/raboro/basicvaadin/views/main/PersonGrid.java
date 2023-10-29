@@ -36,8 +36,14 @@ public class PersonGrid extends Grid<Person> {
                 .setHeader("HolidayDays")
                 .setFooter("Total Holiday Days: " + controller.countHolidayDaysOfAllPersons());
         addColumn(new ComponentRenderer<>(Span::new, (span, person) -> {
-            // render badge
-        }));
+            if (person.getHolidayDays() > 0) {
+                span.getElement().getThemeList().add("badge success");
+                span.getElement().setText("Remaining");
+            } else {
+                span.getElement().getThemeList().add("badge error");
+                span.getElement().setText("Done");
+            }
+        })).setHeader("Holiday Status").setWidth("0.5%");
         addColumn(new ComponentRenderer<>(Button::new, (button, person) -> {
             button.addThemeVariants(ButtonVariant.LUMO_ICON,
                     ButtonVariant.LUMO_ERROR,
