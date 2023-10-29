@@ -1,7 +1,6 @@
 package io.github.raboro.basicvaadin.views.main;
 
 import com.vaadin.flow.component.button.Button;
-import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.icon.Icon;
@@ -10,6 +9,8 @@ import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.data.renderer.ComponentRenderer;
 import io.github.raboro.basicvaadin.controller.PersonController;
 import io.github.raboro.basicvaadin.data.model.Person;
+
+import static com.vaadin.flow.component.button.ButtonVariant.*;
 
 /**
  * @author MariusWoerfel
@@ -28,19 +29,10 @@ public class PersonGrid extends Grid<Person> {
     private void constructColumns() {
         addBasicColumns();
         addBadgeColumn();
+        addDeleteColumn();
         addColumn(new ComponentRenderer<>(Button::new, (button, person) -> {
-            button.addThemeVariants(ButtonVariant.LUMO_ICON,
-                    ButtonVariant.LUMO_ERROR,
-                    ButtonVariant.LUMO_TERTIARY);
-            button.addClickListener(e -> new DeletePersonDialog(person.getName(), () -> {
-                controller.deletePerson(person);
-                update();
-            }).open());
-            button.setIcon(new Icon(VaadinIcon.TRASH));
-        })).setHeader("Delete").setWidth("0.5%");
-        addColumn(new ComponentRenderer<>(Button::new, (button, person) -> {
-            button.addThemeVariants(ButtonVariant.LUMO_ICON,
-                    ButtonVariant.LUMO_TERTIARY);
+            button.addThemeVariants(LUMO_ICON,
+                    LUMO_TERTIARY);
             button.addClickListener(e -> Notification.show("Edit"));
             button.setIcon(new Icon(VaadinIcon.EDIT));
         })).setHeader("Edit").setWidth("0.5%");
@@ -65,6 +57,18 @@ public class PersonGrid extends Grid<Person> {
                     span.getElement().setText(moreThenOneHolidayDay ? "Remaining" : "Done");
                 })
         ).setHeader("Holiday Status").setWidth("0.5%");
+    }
+
+    private void addDeleteColumn() {
+        addColumn(new ComponentRenderer<>(Button::new, (button, person) -> {
+                    button.addThemeVariants(LUMO_ICON, LUMO_ERROR, LUMO_TERTIARY);
+                    button.addClickListener(e -> new DeletePersonDialog(person.getName(), () -> {
+                        controller.deletePerson(person);
+                        update();
+                    }).open());
+                    button.setIcon(new Icon(VaadinIcon.TRASH));
+                })
+        ).setHeader("Delete").setWidth("0.5%");
     }
 
     public void update() {
