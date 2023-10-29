@@ -69,7 +69,7 @@ public class PersonGrid extends Grid<Person> {
     private void addEditColumn() {
         addColumn(new ComponentRenderer<>(Button::new, (button, person) -> {
             button.addThemeVariants(LUMO_ICON, LUMO_TERTIARY);
-            button.addClickListener(e -> Notification.show("Edit"));
+            button.addClickListener(e -> new PersonEditDialog(controller, this::update, person).open());
             button.setIcon(new Icon(VaadinIcon.EDIT));
         })).setHeader("Edit").setWidth("0.5%");
     }
