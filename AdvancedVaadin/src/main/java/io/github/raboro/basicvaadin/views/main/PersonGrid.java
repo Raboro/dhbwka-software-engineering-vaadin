@@ -20,7 +20,7 @@ import static com.vaadin.flow.component.button.ButtonVariant.*;
  */
 public class PersonGrid extends Grid<Person> {
 
-    private final PersonController controller;
+    private transient final PersonController controller;
 
     PersonGrid(PersonController controller) {
         super(Person.class, false);

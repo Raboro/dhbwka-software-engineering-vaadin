@@ -19,13 +19,13 @@ import java.util.Arrays;
  */
 public abstract class PersonDialog extends Dialog {
 
-    protected final PersonController controller;
+    protected final transient PersonController controller;
+    protected final transient Runnable updateGrid;
     protected final TextField nameField = new TextField("Name");
     protected final EmailField emailField = new EmailField("Email");
     protected final TextField ageField = new TextField("Age");
     protected final TextField holidayDaysField = new TextField("HolidayDays");
     protected final TextFieldBase[] fields = new TextFieldBase[]{ nameField, emailField, ageField, holidayDaysField };
-    protected final Runnable updateGrid;
 
     PersonDialog(String title, PersonController controller, Runnable updateGrid) {
         this.updateGrid = updateGrid;
