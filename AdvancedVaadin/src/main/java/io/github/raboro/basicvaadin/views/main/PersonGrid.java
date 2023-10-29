@@ -9,6 +9,8 @@ import com.vaadin.flow.data.renderer.ComponentRenderer;
 import io.github.raboro.basicvaadin.controller.PersonController;
 import io.github.raboro.basicvaadin.data.model.Person;
 
+import java.util.Optional;
+
 import static com.vaadin.flow.component.button.ButtonVariant.*;
 
 /**
@@ -22,6 +24,7 @@ public class PersonGrid extends Grid<Person> {
         super(Person.class, false);
         this.controller = controller;
         constructColumns();
+        handleSelectionListener();
         setItems(this.controller.getAllPersons());
     }
 
@@ -71,6 +74,13 @@ public class PersonGrid extends Grid<Person> {
             button.addClickListener(e -> new PersonEditDialog(controller, this::update, person).open());
             button.setIcon(new Icon(VaadinIcon.EDIT));
         })).setHeader("Edit").setWidth("0.5%");
+    }
+
+    private void handleSelectionListener() {
+        addSelectionListener(selection -> {
+            Optional<Person> element = selection.getFirstSelectedItem();
+            element.ifPresent(person -> new PersonEditDialog(controller, this::update, person).open());
+        });
     }
 
     public void update() {
