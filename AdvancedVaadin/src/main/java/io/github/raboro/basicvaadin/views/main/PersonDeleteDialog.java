@@ -7,9 +7,9 @@ import com.vaadin.flow.component.dialog.Dialog;
 /**
  * @author MariusWoerfel
  */
-public class DeletePersonDialog extends Dialog {
+public class PersonDeleteDialog extends Dialog {
 
-    public DeletePersonDialog(String personName, Runnable delete) {
+    public PersonDeleteDialog(String personName, Runnable delete) {
         setHeaderTitle("Delete Person");
         add("Are you suer to delete: " + personName + "?");
         Button cancelButton = new Button("Cancel", e -> close());
