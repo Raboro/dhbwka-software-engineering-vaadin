@@ -19,12 +19,12 @@ public class Person {
     private String name;
     private String email;
     private int age;
-    private int holidayDays;
+    private int vacationDays;
 
-    public Person(String name, String email, int age, int holidayDays) {
+    public Person(String name, String email, int age, int vacationDays) {
         this.name = name;
         this.email = email;
         this.age = age;
-        this.holidayDays = holidayDays;
+        this.vacationDays = vacationDays;
     }
 }

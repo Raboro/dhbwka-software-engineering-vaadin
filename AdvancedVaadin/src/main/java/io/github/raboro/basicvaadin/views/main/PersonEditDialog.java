@@ -25,14 +25,14 @@ public class PersonEditDialog extends PersonDialog {
         nameField.setValue(person.getName());
         emailField.setValue(person.getEmail());
         ageField.setValue(String.valueOf(person.getAge()));
-        holidayDaysField.setValue(String.valueOf(person.getHolidayDays()));
+        vacationDaysField.setValue(String.valueOf(person.getVacationDays()));
     }
 
     @Override
     protected void saveNonEmptyPerson() {
-        Optional<String> error = controller.validatePerson(ageField.getValue(), holidayDaysField.getValue());
+        Optional<String> error = controller.validatePerson(ageField.getValue(), vacationDaysField.getValue());
         error.ifPresentOrElse(Notification::show, () -> {
-                    controller.updatePerson(person, nameField.getValue(), emailField.getValue(), ageField.getValue(), holidayDaysField.getValue());
+                    controller.updatePerson(person, nameField.getValue(), emailField.getValue(), ageField.getValue(), vacationDaysField.getValue());
                     close();
                     updateGrid.run();
                 }

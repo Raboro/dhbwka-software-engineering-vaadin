@@ -33,9 +33,9 @@ public class PersonController {
         return repository.findAll();
     }
 
-    public int countHolidayDaysOfAllPersons() {
+    public int countVacationDaysOfAllPersons() {
         return getAllPersons().stream()
-                .mapToInt(Person::getHolidayDays)
+                .mapToInt(Person::getVacationDays)
                 .sum();
     }
 
@@ -50,9 +50,9 @@ public class PersonController {
                 .sum();
     }
 
-    public Optional<String> validatePerson(String ageField, String holidayDaysField) {
+    public Optional<String> validatePerson(String ageField, String vacationDaysField) {
         final Optional<String> ageCheck = isInvalid(ageField, "Age is not a number");
-        return ageCheck.isPresent() ? ageCheck : isInvalid(holidayDaysField, "HolidayDays is not a number");
+        return ageCheck.isPresent() ? ageCheck : isInvalid(vacationDaysField, "Vacation Days is not a number");
     }
 
     private Optional<String> isInvalid(String value, String errorMessage) {
@@ -63,22 +63,22 @@ public class PersonController {
         }
     }
 
-    public void savePerson(String name, String email, String age, String holidayDays) {
-        repository.save(new Person(name, email, Integer.parseInt(age), Integer.parseInt(holidayDays)));
+    public void savePerson(String name, String email, String age, String vacationDays) {
+        repository.save(new Person(name, email, Integer.parseInt(age), Integer.parseInt(vacationDays)));
     }
 
     public void deletePerson(Person person) {
         repository.delete(person);
     }
 
-    public void updatePerson(Person person, String name, String email, String age, String holidayDays) {
+    public void updatePerson(Person person, String name, String email, String age, String vacationDays) {
         Optional<Person> byId = repository.findById(person.getId());
         byId.ifPresentOrElse(updatedPerson -> {
             updatedPerson.setName(name);
             updatedPerson.setEmail(email);
             updatedPerson.setAge(Integer.parseInt(age));
-            updatedPerson.setHolidayDays(Integer.parseInt(holidayDays));
+            updatedPerson.setVacationDays(Integer.parseInt(vacationDays));
             repository.save(updatedPerson);
-        }, () -> repository.save(new Person(name, email, Integer.parseInt(age), Integer.parseInt(holidayDays))));
+        }, () -> repository.save(new Person(name, email, Integer.parseInt(age), Integer.parseInt(vacationDays))));
     }
 }

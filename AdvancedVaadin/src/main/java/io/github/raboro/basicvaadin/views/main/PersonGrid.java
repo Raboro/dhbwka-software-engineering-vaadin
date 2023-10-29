@@ -48,20 +48,20 @@ public class PersonGrid extends Grid<Person> {
                 .setFooter("Average Age: " + controller.averageAgeOfAllPersons())
                 .setTextAlign(ColumnTextAlign.CENTER)
                 .setSortable(true);
-        addColumn(Person::getHolidayDays)
-                .setHeader("HolidayDays")
-                .setFooter("Total Holiday Days: " + controller.countHolidayDaysOfAllPersons())
+        addColumn(Person::getVacationDays)
+                .setHeader("Vacation Days")
+                .setFooter("Total Vacation Days: " + controller.countVacationDaysOfAllPersons())
                 .setTextAlign(ColumnTextAlign.CENTER)
                 .setSortable(true);
     }
 
     private void addBadgeColumn() {
         addColumn(new ComponentRenderer<>(Span::new, (span, person) -> {
-                    final boolean moreThenOneHolidayDay = person.getHolidayDays() > 0;
-                    span.getElement().getThemeList().add("badge " + (moreThenOneHolidayDay ? "success" : "error"));
-                    span.getElement().setText(moreThenOneHolidayDay ? "Remaining" : "Done");
+                    final boolean moreThenOneVacationDay = person.getVacationDays() > 0;
+                    span.getElement().getThemeList().add("badge " + (moreThenOneVacationDay ? "success" : "error"));
+                    span.getElement().setText(moreThenOneVacationDay ? "Remaining" : "Done");
                 })
-        ).setHeader("Holiday Status").setWidth("0.5%").setTextAlign(ColumnTextAlign.CENTER).setSortable(true);
+        ).setHeader("Vacation Status").setWidth("0.5%").setTextAlign(ColumnTextAlign.CENTER).setSortable(true);
     }
 
     private void addDeleteColumn() {

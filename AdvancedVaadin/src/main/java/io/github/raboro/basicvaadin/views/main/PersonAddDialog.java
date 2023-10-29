@@ -16,9 +16,9 @@ public class PersonAddDialog extends PersonDialog {
 
     @Override
     protected void saveNonEmptyPerson() {
-        Optional<String> error = controller.validatePerson(ageField.getValue(), holidayDaysField.getValue());
+        Optional<String> error = controller.validatePerson(ageField.getValue(), vacationDaysField.getValue());
         error.ifPresentOrElse(Notification::show, () -> {
-                    controller.savePerson(nameField.getValue(), emailField.getValue(), ageField.getValue(), holidayDaysField.getValue());
+                    controller.savePerson(nameField.getValue(), emailField.getValue(), ageField.getValue(), vacationDaysField.getValue());
                     close();
                     updateGrid.run();
                 }

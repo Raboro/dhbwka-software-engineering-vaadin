@@ -24,8 +24,8 @@ public abstract class PersonDialog extends Dialog {
     protected final TextField nameField = new TextField("Name");
     protected final EmailField emailField = new EmailField("Email");
     protected final TextField ageField = new TextField("Age");
-    protected final TextField holidayDaysField = new TextField("HolidayDays");
-    protected final TextFieldBase[] fields = new TextFieldBase[]{ nameField, emailField, ageField, holidayDaysField };
+    protected final TextField vacationDaysField = new TextField("Vacation Days");
+    protected final TextFieldBase[] fields = new TextFieldBase[]{ nameField, emailField, ageField, vacationDaysField };
 
     PersonDialog(String title, PersonController controller, Runnable updateGrid) {
         this.updateGrid = updateGrid;
@@ -38,7 +38,7 @@ public abstract class PersonDialog extends Dialog {
 
     private VerticalLayout constructContent() {
         VerticalLayout verticalLayout = new VerticalLayout();
-        verticalLayout.add(nameField, emailField, ageField, holidayDaysField);
+        verticalLayout.add(nameField, emailField, ageField, vacationDaysField);
         Arrays.stream(fields).forEach(field -> field.setRequired(true));
         verticalLayout.setAlignItems(FlexComponent.Alignment.CENTER);
         return verticalLayout;
