@@ -15,15 +15,13 @@ import jakarta.annotation.security.PermitAll;
 @Route("")
 public class MainView extends AppLayout {
 
-    private final SecurityService securityService;
-    private final PersonController controller;
-
     public MainView(SecurityService securityService, PersonController controller) {
-        this.controller = controller;
-        this.securityService = securityService;
         setPrimarySection(Section.DRAWER);
         addToNavbar(true, new HeaderView(securityService));
+        constructContent(controller);
+    }
 
+    private void constructContent(PersonController controller) {
         Div content = new Div();
         content.getStyle().setPadding("10%");
         PersonGrid personGrid = new PersonGrid(controller);
