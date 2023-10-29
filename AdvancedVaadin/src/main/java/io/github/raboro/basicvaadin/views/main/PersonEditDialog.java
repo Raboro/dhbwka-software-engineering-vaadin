@@ -11,7 +11,7 @@ import java.util.Optional;
  */
 public class PersonEditDialog extends PersonDialog {
 
-    private transient final Person person;
+    private final transient Person person;
 
     PersonEditDialog(PersonController controller, Runnable updateGrid, Person person) {
         super("Edit Person", controller, updateGrid);
