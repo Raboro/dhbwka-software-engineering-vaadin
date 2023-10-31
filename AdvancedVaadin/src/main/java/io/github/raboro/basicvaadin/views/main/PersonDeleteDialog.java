@@ -12,13 +12,17 @@ public class PersonDeleteDialog extends Dialog {
     public PersonDeleteDialog(String personName, Runnable delete) {
         setHeaderTitle("Delete Person");
         add("Are you suer to delete: " + personName + "?");
-        Button cancelButton = new Button("Cancel", e -> close());
+        constructFooter(delete);
+    }
+
+    private void constructFooter(Runnable delete) {
+        final Button cancelButton = new Button("Cancel", e -> close());
         Button logoutButton = new Button("Delete", e -> {
             close();
             delete.run();
         });
         logoutButton.addThemeVariants(ButtonVariant.LUMO_PRIMARY, ButtonVariant.LUMO_ERROR);
-        getFooter().add(cancelButton, logoutButton);
+        this.getFooter().add(cancelButton, logoutButton);
     }
 
 }
