@@ -12,8 +12,6 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.component.textfield.TextFieldBase;
 import io.github.raboro.basicvaadin.controller.PersonController;
 
-import java.util.Arrays;
-
 /**
  * @author MariusWoerfel
  */
@@ -37,10 +35,11 @@ public abstract class PersonDialog extends Dialog {
     }
 
     private VerticalLayout constructContent() {
-        VerticalLayout verticalLayout = new VerticalLayout();
-        verticalLayout.add(nameField, emailField, ageField, vacationDaysField);
-        Arrays.stream(fields).forEach(field -> field.setRequired(true));
-        verticalLayout.setAlignItems(FlexComponent.Alignment.CENTER);
+        VerticalLayout verticalLayout = new VerticalLayout(FlexComponent.Alignment.CENTER);
+        for (TextFieldBase<TextField, String> field : fields) {
+            verticalLayout.add(field);
+            field.setRequired(true);
+        }
         return verticalLayout;
     }
 
