@@ -13,9 +13,13 @@ public class LogoutDialog extends Dialog {
     public LogoutDialog(SecurityService securityService) {
         setHeaderTitle("Logout");
         add("Are you sure to logout?");
-        Button cancelButton = new Button("Cancel", e -> close());
+        constructFooter(securityService);
+    }
+
+    private void constructFooter(SecurityService securityService) {
+        final Button cancelButton = new Button("Cancel", e -> close());
         Button logoutButton = new Button("Logout", e -> securityService.logout());
         logoutButton.addThemeVariants(ButtonVariant.LUMO_PRIMARY, ButtonVariant.LUMO_ERROR);
-        getFooter().add(cancelButton, logoutButton);
+        this.getFooter().add(cancelButton, logoutButton);
     }
 }
