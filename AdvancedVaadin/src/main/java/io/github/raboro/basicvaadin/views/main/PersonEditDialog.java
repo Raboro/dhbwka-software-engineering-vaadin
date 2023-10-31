@@ -32,7 +32,13 @@ public class PersonEditDialog extends PersonDialog {
     protected void saveNonEmptyPerson() {
         Optional<String> error = controller.validatePerson(ageField.getValue(), vacationDaysField.getValue());
         error.ifPresentOrElse(Notification::show, () -> {
-                    controller.updatePerson(person, nameField.getValue(), emailField.getValue(), ageField.getValue(), vacationDaysField.getValue());
+                    controller.updatePerson(
+                            person,
+                            nameField.getValue(),
+                            emailField.getValue(),
+                            ageField.getValue(),
+                            vacationDaysField.getValue()
+                    );
                     close();
                     updateGrid.run();
                 }
