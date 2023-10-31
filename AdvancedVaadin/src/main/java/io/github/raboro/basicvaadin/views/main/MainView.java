@@ -34,12 +34,16 @@ public class MainView extends AppLayout {
         content.getStyle().setPadding("10%");
         PersonGrid personGrid = new PersonGrid(controller);
         content.add(personGrid);
+        content.add(constructAddButton(controller, personGrid));
+        setContent(content);
+    }
+
+    private Button constructAddButton(PersonController controller, PersonGrid personGrid) {
         Button addButton = new Button("Add", e -> new PersonAddDialog(controller, personGrid::update).open());
         addButton.getStyle().set("margin-left", "46%");
         addButton.getStyle().set("margin-top", "10%");
         addButton.getStyle().setWidth("10%");
-        content.add(addButton);
-        setContent(content);
+        return addButton;
     }
 
     private Tabs createTabs() {
