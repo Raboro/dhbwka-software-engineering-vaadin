@@ -56,7 +56,7 @@ public class MainView extends AppLayout {
         return tabs;
     }
 
-    private Tab createTab(VaadinIcon viewIcon, String name, Component clazz) {
+    private Tab createTab(VaadinIcon viewIcon, String name, Component component) {
         Icon icon = viewIcon.create();
         icon.getStyle().set("box-sizing", "border-box")
                 .set("margin-inline-end", "var(--lumo-space-m)")
@@ -64,7 +64,7 @@ public class MainView extends AppLayout {
                 .set("padding", "var(--lumo-space-xs)");
         RouterLink link = new RouterLink();
         link.add(icon, new Span(name));
-        link.setRoute(clazz.getClass());
+        link.setRoute(component.getClass());
         link.setTabIndex(-1);
         return new Tab(link);
     }
