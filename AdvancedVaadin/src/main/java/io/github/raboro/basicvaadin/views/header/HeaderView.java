@@ -13,15 +13,15 @@ import io.github.raboro.basicvaadin.security.SecurityService;
 public class HeaderView extends HorizontalLayout {
 
     public HeaderView(SecurityService securityService) {
-        constructConfig();
-        addData(securityService);
+        this.constructConfig();
+        this.addData(securityService);
     }
 
     private void constructConfig() {
-        setId("header");
-        setWidthFull();
-        setSpacing(true);
-        setAlignItems(Alignment.CENTER);
+        this.setId("header");
+        this.setWidthFull();
+        this.setSpacing(true);
+        this.setAlignItems(Alignment.CENTER);
     }
 
     private void addData(SecurityService securityService) {
@@ -33,6 +33,6 @@ public class HeaderView extends HorizontalLayout {
         Avatar avatar = new Avatar(securityService.getAuthenticatedUser().getUsername());
         avatar.getStyle().set("margin-right", "2%");
         avatar.setTooltipEnabled(true);
-        add(new DrawerToggle(), title, logoutButton, avatar);
+        this.add(new DrawerToggle(), title, logoutButton, avatar);
     }
 }

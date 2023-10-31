@@ -28,10 +28,10 @@ public abstract class PersonDialog extends Dialog {
     PersonDialog(String title, PersonController controller, Runnable updateGrid) {
         this.updateGrid = updateGrid;
         this.controller = controller;
-        setHeaderTitle(title);
-        setWidth("30%");
-        add(constructContent());
-        constructFooter();
+        this.setHeaderTitle(title);
+        this.setWidth("30%");
+        this.add(constructContent());
+        this.constructFooter();
     }
 
     private VerticalLayout constructContent() {
@@ -47,7 +47,7 @@ public abstract class PersonDialog extends Dialog {
         Button cancelButton = new Button("Cancel", e -> close());
         Button saveButton = new Button("Save", this::savePerson);
         saveButton.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
-        getFooter().add(cancelButton, saveButton);
+        this.getFooter().add(cancelButton, saveButton);
     }
 
     private void savePerson(ClickEvent<Button> buttonClickEvent) {
@@ -57,7 +57,7 @@ public abstract class PersonDialog extends Dialog {
                 return;
             }
         }
-        saveNonEmptyPerson();
+        this.saveNonEmptyPerson();
     }
 
     protected abstract void saveNonEmptyPerson();

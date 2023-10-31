@@ -25,30 +25,30 @@ public class PersonGrid extends Grid<Person> {
     PersonGrid(PersonController controller) {
         super(Person.class, false);
         this.controller = controller;
-        constructColumns();
-        handleSelectionListener();
-        setItems(this.controller.getAllPersons());
+        this.constructColumns();
+        this.handleSelectionListener();
+        this.setItems(this.controller.getAllPersons());
     }
 
     private void constructColumns() {
-        addBasicColumns();
-        addBadgeColumn();
-        addDeleteColumn();
-        addEditColumn();
+        this.addBasicColumns();
+        this.addBadgeColumn();
+        this.addDeleteColumn();
+        this.addEditColumn();
     }
 
     private void addBasicColumns() {
-        addColumn(Person::getName)
+        this.addColumn(Person::getName)
                 .setHeader("Name")
                 .setFooter("Total Persons: " + controller.getAllPersons().size())
                 .setTextAlign(ColumnTextAlign.CENTER)
                 .setSortable(true);
-        addColumn(Person::getAge)
+        this.addColumn(Person::getAge)
                 .setHeader("Age")
                 .setFooter("Average Age: " + controller.averageAgeOfAllPersons())
                 .setTextAlign(ColumnTextAlign.CENTER)
                 .setSortable(true);
-        addColumn(Person::getVacationDays)
+        this.addColumn(Person::getVacationDays)
                 .setHeader("Vacation Days")
                 .setFooter("Total Vacation Days: " + controller.countVacationDaysOfAllPersons())
                 .setTextAlign(ColumnTextAlign.CENTER)
@@ -56,7 +56,7 @@ public class PersonGrid extends Grid<Person> {
     }
 
     private void addBadgeColumn() {
-        addColumn(new ComponentRenderer<>(Span::new, (span, person) -> {
+        this.addColumn(new ComponentRenderer<>(Span::new, (span, person) -> {
                     final boolean moreThenOneVacationDay = person.getVacationDays() > 0;
                     span.getElement().getThemeList().add("badge " + (moreThenOneVacationDay ? "success" : "error"));
                     span.getElement().setText(moreThenOneVacationDay ? "Remaining" : "Done");
@@ -65,7 +65,7 @@ public class PersonGrid extends Grid<Person> {
     }
 
     private void addDeleteColumn() {
-        addColumn(new ComponentRenderer<>(Button::new, (button, person) -> {
+        this.addColumn(new ComponentRenderer<>(Button::new, (button, person) -> {
                     button.addThemeVariants(LUMO_ICON, LUMO_ERROR, LUMO_TERTIARY);
                     button.addClickListener(e -> new PersonDeleteDialog(person.getName(), () -> {
                         controller.deletePerson(person);
@@ -77,7 +77,7 @@ public class PersonGrid extends Grid<Person> {
     }
 
     private void addEditColumn() {
-        addColumn(new ComponentRenderer<>(Button::new, (button, person) -> {
+        this.addColumn(new ComponentRenderer<>(Button::new, (button, person) -> {
             button.addThemeVariants(LUMO_ICON, LUMO_TERTIARY);
             button.addClickListener(e -> new PersonEditDialog(controller, this::update, person).open());
             button.setIcon(new Icon(VaadinIcon.EDIT));
@@ -85,16 +85,16 @@ public class PersonGrid extends Grid<Person> {
     }
 
     private void handleSelectionListener() {
-        addSelectionListener(selection -> {
+        this.addSelectionListener(selection -> {
             Optional<Person> element = selection.getFirstSelectedItem();
             element.ifPresent(person -> new PersonEditDialog(controller, this::update, person).open());
         });
     }
 
     public void update() {
-        setItems(this.controller.getAllPersons());
-        removeAllColumns();
-        constructColumns();
+        this.setItems(this.controller.getAllPersons());
+        this.removeAllColumns();
+        this.constructColumns();
         Notification.show("Updated Columns", 1000, Notification.Position.TOP_END);
     }
 }

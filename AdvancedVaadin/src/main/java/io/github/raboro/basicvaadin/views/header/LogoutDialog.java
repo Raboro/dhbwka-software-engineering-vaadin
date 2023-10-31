@@ -11,9 +11,9 @@ import io.github.raboro.basicvaadin.security.SecurityService;
 public class LogoutDialog extends Dialog {
 
     public LogoutDialog(SecurityService securityService) {
-        setHeaderTitle("Logout");
-        add("Are you sure to logout?");
-        constructFooter(securityService);
+        this.setHeaderTitle("Logout");
+        this.add("Are you sure to logout?");
+        this.constructFooter(securityService);
     }
 
     private void constructFooter(SecurityService securityService) {

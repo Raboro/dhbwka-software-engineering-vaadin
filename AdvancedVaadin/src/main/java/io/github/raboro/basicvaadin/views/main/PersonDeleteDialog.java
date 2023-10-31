@@ -10,9 +10,9 @@ import com.vaadin.flow.component.dialog.Dialog;
 public class PersonDeleteDialog extends Dialog {
 
     public PersonDeleteDialog(String personName, Runnable delete) {
-        setHeaderTitle("Delete Person");
-        add("Are you suer to delete: " + personName + "?");
-        constructFooter(delete);
+        this.setHeaderTitle("Delete Person");
+        this.add("Are you suer to delete: " + personName + "?");
+        this.constructFooter(delete);
     }
 
     private void constructFooter(Runnable delete) {

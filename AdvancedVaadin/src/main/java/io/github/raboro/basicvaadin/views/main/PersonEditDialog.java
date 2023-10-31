@@ -16,9 +16,9 @@ public class PersonEditDialog extends PersonDialog {
     PersonEditDialog(PersonController controller, Runnable updateGrid, Person person) {
         super("Edit Person", controller, updateGrid);
         this.person = person;
-        setHeaderTitle("Edit Person");
-        setWidth("30%");
-        setPlaceholders();
+        this.setHeaderTitle("Edit Person");
+        this.setWidth("30%");
+        this.setPlaceholders();
     }
 
     private void setPlaceholders() {

@@ -24,9 +24,9 @@ import jakarta.annotation.security.PermitAll;
 public class MainView extends AppLayout {
 
     public MainView(SecurityService securityService, PersonController controller) {
-        addToNavbar(new HeaderView(securityService));
-        constructContent(controller);
-        addToDrawer(createTabs());
+        this.addToNavbar(new HeaderView(securityService));
+        this.constructContent(controller);
+        this.addToDrawer(createTabs());
     }
 
     private void constructContent(PersonController controller) {
@@ -35,7 +35,7 @@ public class MainView extends AppLayout {
         PersonGrid personGrid = new PersonGrid(controller);
         content.add(personGrid);
         content.add(constructAddButton(controller, personGrid));
-        setContent(content);
+        this.setContent(content);
     }
 
     private Button constructAddButton(PersonController controller, PersonGrid personGrid) {
