@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Consumer;
 
 /**
  * @author MariusWoerfel
@@ -72,13 +73,20 @@ public class PersonController {
     }
 
     public void updatePerson(Person person, String name, String email, String age, String vacationDays) {
-        Optional<Person> byId = repository.findById(person.getId());
-        byId.ifPresentOrElse(updatedPerson -> {
+        Optional<Person> optionalPerson = repository.findById(person.getId());
+        optionalPerson.ifPresentOrElse(
+                updatePerson(name, email, age, vacationDays),
+                () -> repository.save(new Person(name, email, Integer.parseInt(age), Integer.parseInt(vacationDays)))
+        );
+    }
+
+    private Consumer<Person> updatePerson(String name, String email, String age, String vacationDays) {
+        return updatedPerson -> {
             updatedPerson.setName(name);
             updatedPerson.setEmail(email);
             updatedPerson.setAge(Integer.parseInt(age));
             updatedPerson.setVacationDays(Integer.parseInt(vacationDays));
             repository.save(updatedPerson);
-        }, () -> repository.save(new Person(name, email, Integer.parseInt(age), Integer.parseInt(vacationDays))));
+        };
     }
 }
