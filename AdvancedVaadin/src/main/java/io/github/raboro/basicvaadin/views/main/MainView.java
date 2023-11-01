@@ -14,6 +14,7 @@ import com.vaadin.flow.router.Route;
 import com.vaadin.flow.router.RouterLink;
 import io.github.raboro.basicvaadin.controller.PersonController;
 import io.github.raboro.basicvaadin.security.SecurityService;
+import io.github.raboro.basicvaadin.views.collection.CollectionView;
 import io.github.raboro.basicvaadin.views.header.HeaderView;
 import io.github.raboro.basicvaadin.views.login.LoginView;
 import jakarta.annotation.security.PermitAll;
@@ -50,7 +51,8 @@ public class MainView extends AppLayout {
         Tabs tabs = new Tabs();
         tabs.add(
                 createTab(VaadinIcon.DASHBOARD, "Overview", this),
-                createTab(VaadinIcon.LOCK, "Login", new LoginView())
+                createTab(VaadinIcon.LOCK, "Login", new LoginView()),
+                createTab(VaadinIcon.ABACUS, "Collection", new CollectionView())
         );
         tabs.setOrientation(Tabs.Orientation.VERTICAL);
         return tabs;
