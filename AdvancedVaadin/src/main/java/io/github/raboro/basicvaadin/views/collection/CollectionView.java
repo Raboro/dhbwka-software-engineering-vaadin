@@ -71,15 +71,15 @@ public class CollectionView extends AppLayout {
     }
 
     private void addStylingToContent(Div content) {
-        Style style = content.getStyle();
-        style.setMargin("5%");
-        style.setBorder("3px solid black");
-        style.setPadding("2%");
-        style.set("border-radius", "10px");
-        style.set("gap", "1%");
-        style.set("flex-wrap", "wrap");
-        style.set("margin-top", "15%");
-        style.setBoxShadow("0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)");
-        style.setDisplay(Style.Display.FLEX);
+        content.getStyle()
+                .setMargin("5%")
+                .setBorder("3px solid black")
+                .setPadding("2%")
+                .set("border-radius", "10px")
+                .set("gap", "1%")
+                .set("flex-wrap", "wrap")
+                .set("margin-top", "15%")
+                .setBoxShadow("0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)")
+                .setDisplay(Style.Display.FLEX);
     }
 }
