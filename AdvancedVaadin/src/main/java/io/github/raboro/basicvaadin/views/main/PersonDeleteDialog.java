@@ -11,7 +11,7 @@ public class PersonDeleteDialog extends Dialog {
 
     public PersonDeleteDialog(String personName, Runnable delete) {
         this.setHeaderTitle("Delete Person");
-        this.add("Are you suer to delete: " + personName + "?");
+        this.add("Are you sure to delete: " + personName + "?");
         this.constructFooter(delete);
     }
 
